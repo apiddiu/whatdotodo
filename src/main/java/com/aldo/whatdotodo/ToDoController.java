@@ -52,7 +52,7 @@ public class ToDoController {
             item.setDescription(modifiedItem.getDescription());
             item.setStatus(modifiedItem.getStatus());
             repo.save(item);
-            return modifiedItem;
+            return item;
         }
         throw new ResourceNotFoundException();
     }
