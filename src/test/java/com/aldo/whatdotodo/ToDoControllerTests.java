@@ -22,7 +22,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,7 +55,7 @@ public class ToDoControllerTests {
             post("/items")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
-                    gson.toJson(new TodoItem("title", "description"))))
+                    gson.toJson(new ToDoItem("title", "description"))))
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.title").value("title"))
