@@ -2,23 +2,37 @@ package com.aldo.whatdotodo;
 
 import lombok.Data;
 
-@Data
-public class TodoItem {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.io.Serializable;
 
+@Data
+@Entity
+public class ToDoItem implements Serializable {
+
+    @Id
+    @GeneratedValue
     private Long id;
+
+    @Column
     private String title;
+    @Column
     private String description;
+
+    @Column
     private Status status = Status.OPEN;
 
-    public TodoItem(){}
+    public ToDoItem(){}
 
-    public TodoItem(long id, String title, String description) {
+    public ToDoItem(long id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
     }
 
-    public TodoItem(String title, String description) {
+    public ToDoItem(String title, String description) {
         this.title = title;
         this.description = description;
     }
