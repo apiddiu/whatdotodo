@@ -1,15 +1,13 @@
 package com.aldo.whatdotodo;
 
-public enum Status {
+import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-    OPEN("Open"),
-    IN_PROGRESS("In Progress"),
-    CLOSED("Closed");
-
-    private String name;
-
-    Status(String name){
-        this.name = name;
-    }
+@Data
+@Entity
+public class Status {
+    @Id
+    private String status;
 }

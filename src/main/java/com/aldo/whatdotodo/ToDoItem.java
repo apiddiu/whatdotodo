@@ -22,7 +22,7 @@ public class ToDoItem implements Serializable {
     private String description;
 
     @Column
-    private Status status = Status.OPEN;
+    private Status status;
 
     public ToDoItem(){}
 
