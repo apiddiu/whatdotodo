@@ -1,5 +1,9 @@
-package com.aldo.whatdotodo;
+package com.aldo.whatdotodo.controller;
 
+import com.aldo.whatdotodo.model.ResourceNotFoundException;
+import com.aldo.whatdotodo.model.Status;
+import com.aldo.whatdotodo.model.ToDoItem;
+import com.aldo.whatdotodo.service.ToDoItemRepository;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,25 +22,34 @@ public class ToDoController {
         return repo.findAll();
     }
 
-    @RequestMapping(value = "{itemId}",method = RequestMethod.GET)
+    @RequestMapping(value = "{itemId}", method = RequestMethod.GET)
     public ToDoItem item(@PathVariable Long itemId) {
         ToDoItem item = repo.findOne(itemId);
 
-        if(item!=null){
+        if (item != null) {
             return item;
         }
         throw new ResourceNotFoundException();
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ToDoItem add(@RequestBody ToDoItem item){
+    public ToDoItem add(@RequestBody ToDoItem item) {
         return repo.save(item);
     }
 
+    @RequestMapping(method = RequestMethod.PUT)
+    public List<ToDoItem> setItems(@RequestBody List<ToDoItem> items) {
+        repo.deleteAll();
+        if (!items.isEmpty()) {
+            repo.save(items);
+        }
+        return repo.findAll();
+    }
+
     @RequestMapping(value = "{itemId}", method = RequestMethod.DELETE)
-    public ToDoItem delete(@PathVariable Long itemId){
+    public ToDoItem delete(@PathVariable Long itemId) {
         ToDoItem item = repo.findOne(itemId);
-        if(item!=null){
+        if (item != null) {
             repo.delete(itemId);
             return item;
         }
@@ -44,10 +57,10 @@ public class ToDoController {
     }
 
     @RequestMapping(value = "{itemId}", method = RequestMethod.PUT)
-    public ToDoItem update(@PathVariable Long itemId, @RequestBody ToDoItem modifiedItem){
+    public ToDoItem update(@PathVariable Long itemId, @RequestBody ToDoItem modifiedItem) {
         //TODO Check url itemId and object itemId match
         ToDoItem item = repo.findOne(itemId);
-        if(item!=null){
+        if (item != null) {
             item.setTitle(modifiedItem.getTitle());
             item.setDescription(modifiedItem.getDescription());
             item.setStatus(modifiedItem.getStatus());
@@ -58,10 +71,10 @@ public class ToDoController {
     }
 
     @RequestMapping(value = "{itemId}/status", method = RequestMethod.PUT)
-    public Status updateStatus(@PathVariable Long itemId, @RequestBody Status status){
+    public Status updateStatus(@PathVariable Long itemId, @RequestBody Status status) {
         log.info("ItemId: {}", itemId);
         ToDoItem item = repo.findOne(itemId);
-        if(item!=null){
+        if (item != null) {
             item.setStatus(status);
             repo.save(item);
             return item.getStatus();

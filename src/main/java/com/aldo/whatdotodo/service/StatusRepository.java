@@ -1,5 +1,6 @@
-package com.aldo.whatdotodo;
+package com.aldo.whatdotodo.service;
 
+import com.aldo.whatdotodo.model.Status;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

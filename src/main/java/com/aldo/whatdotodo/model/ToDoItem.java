@@ -1,4 +1,4 @@
-package com.aldo.whatdotodo;
+package com.aldo.whatdotodo.model;
 
 import lombok.Data;
 
@@ -9,7 +9,6 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "TODOITEM")
-
 public class ToDoItem implements Serializable {
 
     @Id
@@ -21,7 +20,7 @@ public class ToDoItem implements Serializable {
     @Column
     private String description;
 
-    @Column
+    @OneToOne
     private Status status;
 
     public ToDoItem(){}
