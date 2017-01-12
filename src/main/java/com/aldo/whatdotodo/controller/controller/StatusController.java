@@ -1,7 +1,7 @@
-package com.aldo.whatdotodo.controller;
+package com.aldo.whatdotodo.controller.controller;
 
-import com.aldo.whatdotodo.model.Status;
-import com.aldo.whatdotodo.service.StatusRepository;
+import com.aldo.whatdotodo.controller.model.Status;
+import com.aldo.whatdotodo.controller.service.StatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

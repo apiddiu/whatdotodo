@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.aldo.whatdotodo;
+package com.aldo.whatdotodo.controller;
 
-import com.aldo.whatdotodo.config.Application;
-import com.aldo.whatdotodo.model.Status;
-import com.aldo.whatdotodo.model.ToDoItem;
+import com.aldo.whatdotodo.controller.config.Application;
+import com.aldo.whatdotodo.controller.model.ToDoItem;
+import com.aldo.whatdotodo.controller.model.Status;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.assertj.core.util.Lists;
@@ -67,6 +67,7 @@ public class ToDoControllerTests {
     private final String updatedDescription = "test-description-updated";
     private final Status closed = new Status("Closed");
     private final long itemNotFoundId = -1;
+    private final String unknown = "unknown";
 
     @Before
     public void setup() throws Exception {
@@ -168,7 +169,7 @@ public class ToDoControllerTests {
             .andReturn();
 
         updateItemStatus(firstItem(getResult).getId())
-            .andExpect(itemStatus(closed));
+            .andExpect(returnedValue(closed.getName()));
 
         getItems()
             .andExpect(itemsSize(1))
@@ -177,7 +178,21 @@ public class ToDoControllerTests {
 
     @Test
     public void updateNonExistingElementStatusProducesNotFoundResult() throws Exception {
-        updateItemStatusNotFound();
+        updateItemStatusItemNotFound();
+    }
+
+    @Test
+    public void updateStatusWithUnknownStatusProducesNotFoundResult() throws Exception {
+        insertItem()
+            .andExpect(itemTitle(title))
+            .andExpect(itemDescription(description));
+
+        MvcResult getResult = getItems()
+            .andExpect(itemsSize(1))
+            .andExpect(itemsContain(title, description))
+            .andReturn();
+
+        updateItemStatusNotFound(firstItem(getResult).getId());
     }
 
     @Test
@@ -264,12 +279,22 @@ public class ToDoControllerTests {
             .andExpect(status().isOk());
     }
 
-    private ResultActions updateItemStatusNotFound() throws Exception {
+    private ResultActions updateItemStatusItemNotFound() throws Exception {
         return this.mockMvc.perform(
             put("/items/" + itemNotFoundId + "/status")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     gson.toJson(closed)))
+            .andDo(print())
+            .andExpect(status().isNotFound());
+    }
+
+    private ResultActions updateItemStatusNotFound(Long itemId) throws Exception {
+        return this.mockMvc.perform(
+            put("/items/" + itemId + "/status")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(
+                    gson.toJson(unknown)))
             .andDo(print())
             .andExpect(status().isNotFound());
     }
@@ -290,7 +315,11 @@ public class ToDoControllerTests {
     }
 
     private ResultMatcher itemStatus(Status status) {
-        return jsonPath("$.status").value(status.getStatus());
+        return jsonPath("$.status").value(status.getName());
+    }
+
+    private ResultMatcher returnedValue(String value) {
+        return jsonPath("$").value(value);
     }
 
     private ResultMatcher itemsContain(String title, String description) {
@@ -302,7 +331,7 @@ public class ToDoControllerTests {
     private ResultMatcher itemsContain(String title, String description, Status status) {
         return jsonPath(
             String.format("$.[?(@.title=='%s' && @.description=='%s' && @.status=='%s')]",
-                title, description, status))
+                title, description, status.getName()))
             .exists();
     }
 

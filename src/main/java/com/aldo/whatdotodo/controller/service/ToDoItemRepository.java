@@ -1,6 +1,6 @@
-package com.aldo.whatdotodo.service;
+package com.aldo.whatdotodo.controller.service;
 
-import com.aldo.whatdotodo.model.ToDoItem;
+import com.aldo.whatdotodo.controller.model.ToDoItem;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
