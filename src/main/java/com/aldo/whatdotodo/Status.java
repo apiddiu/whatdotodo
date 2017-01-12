@@ -1,7 +1,15 @@
 package com.aldo.whatdotodo;
 
 public enum Status {
-    OPEN,
-    IN_PROGRESS,
-    CLOSED
+
+
+    OPEN("Open"),
+    IN_PROGRESS("In Progress"),
+    CLOSED("Closed");
+
+    private String name;
+
+    Status(String name){
+        this.name = name;
+    }
 }

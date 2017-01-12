@@ -2,18 +2,18 @@ package com.aldo.whatdotodo;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 import java.io.Serializable;
 
 @Data
 @Entity
+@Table(name = "TODOITEM")
+
 public class ToDoItem implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
