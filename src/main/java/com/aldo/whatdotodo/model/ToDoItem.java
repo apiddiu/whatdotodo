@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 
 @Data
@@ -33,9 +32,22 @@ public class ToDoItem implements Serializable {
         this.description = description;
     }
 
+    public ToDoItem(long id, String title, String description, Status statusObj) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.statusObj = statusObj;
+    }
+
     public ToDoItem(String title, String description) {
         this.title = title;
         this.description = description;
+    }
+
+    public ToDoItem(String title, String description, Status statusObj) {
+        this.title = title;
+        this.description = description;
+        this.statusObj = statusObj;
     }
 
     public String getStatus(){

@@ -20,6 +20,7 @@ import com.aldo.whatdotodo.model.Status;
 import com.aldo.whatdotodo.model.ToDoItem;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.apache.commons.lang.StringUtils;
 import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,15 +28,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.MediaType;
-import org.springframework.security.config.annotation.authentication.builders
-    .AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration
-    .WebSecurityConfigurerAdapter;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -67,20 +60,23 @@ public class ToDoControllerTests {
 
     @Autowired
     private Gson gson;
-
     @Autowired
     private MockMvc mvc;
 
     private final static String TITLE = "test-title";
+
     private final static String DESCRIPTION = "test-description";
     private final static String UPDATED_TITLE = "test-title-updated";
     private final static String UPDATED_DESCRIPTION = "test-description-updated";
     private final static Status CLOSED = new Status("Closed");
-    private final static long ITEM_NOT_FOUND_ID = -1;
+    private final static String ITEM_NOT_FOUND_ID = "-1";
     private final static String UNKNOWN = "unknown";
     public final static String TESTER_USER = "test-user";
     public final static String TESTER_PASSWORD = "test-password";
     public final static String TESTER_ROLE = "TESTER";
+    public final static String BASE_API_TEMPLATE = "/api/";
+    public static final String ITEMS_TEMPLATE = "items";
+    public static final String STATUS_TEMPLATE = "status";
 
     @Before
     public void setup() throws Exception {
@@ -230,13 +226,13 @@ public class ToDoControllerTests {
     }
 
     private ResultActions getItems() throws Exception {
-        return perform(get("/items")).andDo(print())
+        return perform(get(composePattern(ITEMS_TEMPLATE))).andDo(print())
             .andExpect(status().isOk());
     }
 
     private ResultActions insertItem() throws Exception {
         return perform(
-            post("/items")
+            post(composePattern(ITEMS_TEMPLATE))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     gson.toJson(new ToDoItem(TITLE, DESCRIPTION))))
@@ -245,34 +241,34 @@ public class ToDoControllerTests {
     }
 
     private ResultActions getItem(Long itemId) throws Exception {
-        return perform(get("/items/" + itemId))
+        return perform(get(composePattern(ITEMS_TEMPLATE, itemId.toString())))
             .andDo(print())
             .andExpect(status().isOk());
     }
 
     private ResultActions getItemNotFound() throws Exception {
-        return perform(get("/items/" + ITEM_NOT_FOUND_ID))
+        return perform(get(composePattern(ITEMS_TEMPLATE, ITEM_NOT_FOUND_ID)))
             .andDo(print())
             .andExpect(status().isNotFound());
     }
 
     private ResultActions deleteItem(Long itemId) throws Exception {
         return perform(
-            delete("/items/" + itemId))
+            delete(composePattern(ITEMS_TEMPLATE, itemId.toString())))
             .andDo(print())
             .andExpect(status().isOk());
     }
 
     private ResultActions deleteItemNotFound() throws Exception {
         return perform(
-            delete("/items/" + ITEM_NOT_FOUND_ID))
+            delete(composePattern(ITEMS_TEMPLATE, ITEM_NOT_FOUND_ID)))
             .andDo(print())
             .andExpect(status().isNotFound());
     }
 
     private ResultActions updateItem(Long itemId) throws Exception {
         return perform(
-            put("/items/" + itemId)
+            put(composePattern(ITEMS_TEMPLATE, itemId.toString()))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     gson.toJson(new ToDoItem(UPDATED_TITLE, UPDATED_DESCRIPTION))))
@@ -282,7 +278,7 @@ public class ToDoControllerTests {
 
     private ResultActions updateItemNotFound() throws Exception {
         return perform(
-            put("/items/" + ITEM_NOT_FOUND_ID)
+            put(composePattern(ITEMS_TEMPLATE, ITEM_NOT_FOUND_ID))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     gson.toJson(new ToDoItem(UPDATED_TITLE, UPDATED_DESCRIPTION))))
@@ -292,7 +288,7 @@ public class ToDoControllerTests {
 
     private ResultActions updateItemStatus(Long itemId) throws Exception {
         return perform(
-            put("/items/" + itemId + "/status")
+            put(composePattern(ITEMS_TEMPLATE, itemId.toString(), STATUS_TEMPLATE))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     gson.toJson("Closed")))
@@ -302,7 +298,7 @@ public class ToDoControllerTests {
 
     private ResultActions updateItemStatusItemNotFound() throws Exception {
         return perform(
-            put("/items/" + ITEM_NOT_FOUND_ID + "/status")
+            put(composePattern(ITEMS_TEMPLATE, ITEM_NOT_FOUND_ID, STATUS_TEMPLATE))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     gson.toJson(CLOSED)))
@@ -312,7 +308,7 @@ public class ToDoControllerTests {
 
     private ResultActions updateItemStatusNotFound(Long itemId) throws Exception {
         return perform(
-            put("/items/" + itemId + "/status")
+            put(composePattern(ITEMS_TEMPLATE , itemId.toString() , STATUS_TEMPLATE))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     gson.toJson(UNKNOWN)))
@@ -321,7 +317,7 @@ public class ToDoControllerTests {
     }
 
     private ResultActions setItems(List<ToDoItem> items) throws Exception {
-        return perform(put("/items")
+        return perform(put(composePattern(ITEMS_TEMPLATE))
             .contentType(MediaType.APPLICATION_JSON)
             .content(gson.toJson(items)))
             .andExpect(status().isOk());
@@ -373,27 +369,29 @@ public class ToDoControllerTests {
         return gson.fromJson(result.getResponse().getContentAsString(), ToDoItem.class);
     }
 
-    @Configuration
-    @EnableWebSecurity
-    @Order(99)
-    static class Config extends WebSecurityConfigurerAdapter {
-
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            http
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin();
-        }
-
-        @Autowired
-        public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-            auth
-                .inMemoryAuthentication()
-                .withUser(TESTER_USER).password(TESTER_PASSWORD).roles(TESTER_ROLE);
-        }
-
-
+    private String composePattern(String... patternElements) {
+        return BASE_API_TEMPLATE + StringUtils.join(patternElements, "/");
     }
+
+//    @Configuration
+//    @EnableWebSecurity
+//    @Order(99)
+//    static class Config extends WebSecurityConfigurerAdapter {
+//
+//        @Override
+//        protected void configure(HttpSecurity http) throws Exception {
+//            http
+//                .authorizeRequests()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin();
+//        }
+//
+//        @Autowired
+//        public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//            auth
+//                .inMemoryAuthentication()
+//                .withUser(TESTER_USER).password(TESTER_PASSWORD).roles(TESTER_ROLE);
+//        }
+//    }
 }

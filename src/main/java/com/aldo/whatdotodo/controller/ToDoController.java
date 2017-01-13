@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/items")
+@RequestMapping("/api/items")
 public class ToDoController {
     private static org.slf4j.Logger log = LoggerFactory.getLogger(ToDoController.class);
 
