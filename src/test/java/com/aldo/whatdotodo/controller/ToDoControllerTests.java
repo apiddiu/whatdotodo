@@ -15,9 +15,9 @@
  */
 package com.aldo.whatdotodo.controller;
 
-import com.aldo.whatdotodo.controller.config.Application;
-import com.aldo.whatdotodo.controller.model.ToDoItem;
-import com.aldo.whatdotodo.controller.model.Status;
+import com.aldo.whatdotodo.config.Application;
+import com.aldo.whatdotodo.model.ToDoItem;
+import com.aldo.whatdotodo.model.Status;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.assertj.core.util.Lists;

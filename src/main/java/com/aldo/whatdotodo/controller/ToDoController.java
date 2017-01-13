@@ -1,10 +1,10 @@
-package com.aldo.whatdotodo.controller.controller;
+package com.aldo.whatdotodo.controller;
 
-import com.aldo.whatdotodo.controller.model.ResourceNotFoundException;
-import com.aldo.whatdotodo.controller.model.ToDoItem;
-import com.aldo.whatdotodo.controller.service.ToDoItemRepository;
-import com.aldo.whatdotodo.controller.model.Status;
-import com.aldo.whatdotodo.controller.service.StatusRepository;
+import com.aldo.whatdotodo.model.ResourceNotFoundException;
+import com.aldo.whatdotodo.model.Status;
+import com.aldo.whatdotodo.model.ToDoItem;
+import com.aldo.whatdotodo.service.StatusRepository;
+import com.aldo.whatdotodo.service.ToDoItemRepository;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
