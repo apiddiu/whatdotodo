@@ -16,26 +16,33 @@
 package com.aldo.whatdotodo.controller;
 
 import com.aldo.whatdotodo.config.Application;
-import com.aldo.whatdotodo.model.ToDoItem;
 import com.aldo.whatdotodo.model.Status;
+import com.aldo.whatdotodo.model.ToDoItem;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.MediaType;
+import org.springframework.security.config.annotation.authentication.builders
+    .AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration
+    .WebSecurityConfigurerAdapter;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.ResultMatcher;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -43,6 +50,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.springframework.security.test.web.servlet.request
+    .SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.request
+    .SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -55,19 +66,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ToDoControllerTests {
 
     @Autowired
-    private MockMvc mockMvc;
-    @Autowired
     private Gson gson;
 
-    private static Logger log = LoggerFactory.getLogger(ToDoControllerTests.class);
+    @Autowired
+    private MockMvc mvc;
 
-    private final String title = "test-title";
-    private final String description = "test-description";
-    private final String updatedTitle = "test-title-updated";
-    private final String updatedDescription = "test-description-updated";
-    private final Status closed = new Status("Closed");
-    private final long itemNotFoundId = -1;
-    private final String unknown = "unknown";
+    private final static String TITLE = "test-title";
+    private final static String DESCRIPTION = "test-description";
+    private final static String UPDATED_TITLE = "test-title-updated";
+    private final static String UPDATED_DESCRIPTION = "test-description-updated";
+    private final static Status CLOSED = new Status("Closed");
+    private final static long ITEM_NOT_FOUND_ID = -1;
+    private final static String UNKNOWN = "unknown";
+    public final static String TESTER_USER = "test-user";
+    public final static String TESTER_PASSWORD = "test-password";
+    public final static String TESTER_ROLE = "TESTER";
 
     @Before
     public void setup() throws Exception {
@@ -83,24 +96,24 @@ public class ToDoControllerTests {
     @Test
     public void createElement() throws Exception {
         insertItem()
-            .andExpect(itemTitle(title))
-            .andExpect(itemDescription(description));
+            .andExpect(itemTitle(TITLE))
+            .andExpect(itemDescription(DESCRIPTION));
 
         getItems()
             .andExpect(itemsSize(1))
-            .andExpect(itemsContain(title, description));
+            .andExpect(itemsContain(TITLE, DESCRIPTION));
     }
 
     @Test
     public void getElement() throws Exception {
         MvcResult insertResult = insertItem()
-            .andExpect(jsonPath("$.title").value(title))
-            .andExpect(jsonPath("$.description").value(description))
+            .andExpect(itemTitle(TITLE))
+            .andExpect(itemDescription(DESCRIPTION))
             .andReturn();
 
         getItem(fromResult(insertResult).getId())
-            .andExpect(jsonPath("$.title").value(title))
-            .andExpect(jsonPath("$.description").value(description));
+            .andExpect(itemTitle(TITLE))
+            .andExpect(itemDescription(DESCRIPTION));
     }
 
     @Test
@@ -111,17 +124,17 @@ public class ToDoControllerTests {
     @Test
     public void deleteElement() throws Exception {
         insertItem()
-            .andExpect(itemTitle(title))
-            .andExpect(itemDescription(description));
+            .andExpect(itemTitle(TITLE))
+            .andExpect(itemDescription(DESCRIPTION));
 
         MvcResult getResult = getItems()
             .andExpect(itemsSize(1))
-            .andExpect(itemsContain(title, description))
+            .andExpect(itemsContain(TITLE, DESCRIPTION))
             .andReturn();
 
         deleteItem(firstItem(getResult).getId())
-            .andExpect(itemTitle(title))
-            .andExpect(itemDescription(description));
+            .andExpect(itemTitle(TITLE))
+            .andExpect(itemDescription(DESCRIPTION));
 
         getItems()
             .andExpect(itemsSize(0));
@@ -135,21 +148,21 @@ public class ToDoControllerTests {
     @Test
     public void updateElement() throws Exception {
         insertItem()
-            .andExpect(itemTitle(title))
-            .andExpect(itemDescription(description));
+            .andExpect(itemTitle(TITLE))
+            .andExpect(itemDescription(DESCRIPTION));
 
         MvcResult getResult = getItems()
             .andExpect(itemsSize(1))
-            .andExpect(itemsContain(title, description))
+            .andExpect(itemsContain(TITLE, DESCRIPTION))
             .andReturn();
 
         updateItem(firstItem(getResult).getId())
-            .andExpect(itemTitle(updatedTitle))
-            .andExpect(itemDescription(updatedDescription));
+            .andExpect(itemTitle(UPDATED_TITLE))
+            .andExpect(itemDescription(UPDATED_DESCRIPTION));
 
         getItems()
             .andExpect(itemsSize(1))
-            .andExpect(itemsContain(updatedTitle, updatedDescription));
+            .andExpect(itemsContain(UPDATED_TITLE, UPDATED_DESCRIPTION));
     }
 
     @Test
@@ -160,20 +173,20 @@ public class ToDoControllerTests {
     @Test
     public void updateElementStatus() throws Exception {
         insertItem()
-            .andExpect(itemTitle(title))
-            .andExpect(itemDescription(description));
+            .andExpect(itemTitle(TITLE))
+            .andExpect(itemDescription(DESCRIPTION));
 
         MvcResult getResult = getItems()
             .andExpect(itemsSize(1))
-            .andExpect(itemsContain(title, description))
+            .andExpect(itemsContain(TITLE, DESCRIPTION))
             .andReturn();
 
         updateItemStatus(firstItem(getResult).getId())
-            .andExpect(returnedValue(closed.getName()));
+            .andExpect(returnedValue(CLOSED.getName()));
 
         getItems()
             .andExpect(itemsSize(1))
-            .andExpect(itemsContain(title, description, closed));
+            .andExpect(itemsContain(TITLE, DESCRIPTION, CLOSED));
     }
 
     @Test
@@ -184,12 +197,12 @@ public class ToDoControllerTests {
     @Test
     public void updateStatusWithUnknownStatusProducesNotFoundResult() throws Exception {
         insertItem()
-            .andExpect(itemTitle(title))
-            .andExpect(itemDescription(description));
+            .andExpect(itemTitle(TITLE))
+            .andExpect(itemDescription(DESCRIPTION));
 
         MvcResult getResult = getItems()
             .andExpect(itemsSize(1))
-            .andExpect(itemsContain(title, description))
+            .andExpect(itemsContain(TITLE, DESCRIPTION))
             .andReturn();
 
         updateItemStatusNotFound(firstItem(getResult).getId());
@@ -208,69 +221,77 @@ public class ToDoControllerTests {
             .andExpect(itemsSize(3));
     }
 
+    private ResultActions perform(MockHttpServletRequestBuilder request) throws Exception {
+        return mvc.perform(
+            request
+                .with(user(TESTER_USER).password(TESTER_PASSWORD).roles(TESTER_ROLE))
+                .with(csrf())
+        );
+    }
+
     private ResultActions getItems() throws Exception {
-        return this.mockMvc.perform(get("/items")).andDo(print())
+        return perform(get("/items")).andDo(print())
             .andExpect(status().isOk());
     }
 
     private ResultActions insertItem() throws Exception {
-        return this.mockMvc.perform(
+        return perform(
             post("/items")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
-                    gson.toJson(new ToDoItem(title, description))))
+                    gson.toJson(new ToDoItem(TITLE, DESCRIPTION))))
             .andDo(print())
             .andExpect(status().isOk());
     }
 
     private ResultActions getItem(Long itemId) throws Exception {
-        return this.mockMvc.perform(get("/items/" + itemId))
+        return perform(get("/items/" + itemId))
             .andDo(print())
             .andExpect(status().isOk());
     }
 
     private ResultActions getItemNotFound() throws Exception {
-        return this.mockMvc.perform(get("/items/" + itemNotFoundId))
+        return perform(get("/items/" + ITEM_NOT_FOUND_ID))
             .andDo(print())
             .andExpect(status().isNotFound());
     }
 
     private ResultActions deleteItem(Long itemId) throws Exception {
-        return this.mockMvc.perform(
+        return perform(
             delete("/items/" + itemId))
             .andDo(print())
             .andExpect(status().isOk());
     }
 
     private ResultActions deleteItemNotFound() throws Exception {
-        return this.mockMvc.perform(
-            delete("/items/" + itemNotFoundId))
+        return perform(
+            delete("/items/" + ITEM_NOT_FOUND_ID))
             .andDo(print())
             .andExpect(status().isNotFound());
     }
 
     private ResultActions updateItem(Long itemId) throws Exception {
-        return this.mockMvc.perform(
+        return perform(
             put("/items/" + itemId)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
-                    gson.toJson(new ToDoItem(updatedTitle, updatedDescription))))
+                    gson.toJson(new ToDoItem(UPDATED_TITLE, UPDATED_DESCRIPTION))))
             .andDo(print())
             .andExpect(status().isOk());
     }
 
     private ResultActions updateItemNotFound() throws Exception {
-        return this.mockMvc.perform(
-            put("/items/" + itemNotFoundId)
+        return perform(
+            put("/items/" + ITEM_NOT_FOUND_ID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
-                    gson.toJson(new ToDoItem(updatedTitle, updatedDescription))))
+                    gson.toJson(new ToDoItem(UPDATED_TITLE, UPDATED_DESCRIPTION))))
             .andDo(print())
             .andExpect(status().isNotFound());
     }
 
     private ResultActions updateItemStatus(Long itemId) throws Exception {
-        return this.mockMvc.perform(
+        return perform(
             put("/items/" + itemId + "/status")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
@@ -280,27 +301,27 @@ public class ToDoControllerTests {
     }
 
     private ResultActions updateItemStatusItemNotFound() throws Exception {
-        return this.mockMvc.perform(
-            put("/items/" + itemNotFoundId + "/status")
+        return perform(
+            put("/items/" + ITEM_NOT_FOUND_ID + "/status")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
-                    gson.toJson(closed)))
+                    gson.toJson(CLOSED)))
             .andDo(print())
             .andExpect(status().isNotFound());
     }
 
     private ResultActions updateItemStatusNotFound(Long itemId) throws Exception {
-        return this.mockMvc.perform(
+        return perform(
             put("/items/" + itemId + "/status")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
-                    gson.toJson(unknown)))
+                    gson.toJson(UNKNOWN)))
             .andDo(print())
             .andExpect(status().isNotFound());
     }
 
     private ResultActions setItems(List<ToDoItem> items) throws Exception {
-        return this.mockMvc.perform(put("/items")
+        return perform(put("/items")
             .contentType(MediaType.APPLICATION_JSON)
             .content(gson.toJson(items)))
             .andExpect(status().isOk());
@@ -350,5 +371,29 @@ public class ToDoControllerTests {
 
     private ToDoItem fromResult(MvcResult result) throws UnsupportedEncodingException {
         return gson.fromJson(result.getResponse().getContentAsString(), ToDoItem.class);
+    }
+
+    @Configuration
+    @EnableWebSecurity
+    @Order(99)
+    static class Config extends WebSecurityConfigurerAdapter {
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin();
+        }
+
+        @Autowired
+        public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+            auth
+                .inMemoryAuthentication()
+                .withUser(TESTER_USER).password(TESTER_PASSWORD).roles(TESTER_ROLE);
+        }
+
+
     }
 }
