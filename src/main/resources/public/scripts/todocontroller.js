@@ -58,7 +58,10 @@ angular.module('todoapp', [])
     ];
        
        $scope.move=function(item, status){
-           console.info('eja');
            $filter('filter')($scope.items, function (i) {return i.id===item.id;})[0].status = status.name;
+       }
+       
+       $scope.delete=function(item){
+            $scope.items.splice($scope.items.indexOf($filter('filter')($scope.items, function (i) {return i.id===item.id;})[0]),1);
        }
 }]);

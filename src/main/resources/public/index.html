@@ -12,7 +12,7 @@
     <title>WhatDoToDo</title>
 </head>
 <body>
-<h1>WhadDoYouToDoToDay</h1>
+<h1>WhatDoYouToDoToDay</h1>
     <div class="container" ng-controller="todocontroller as ctr">
         
         <div class="row row-content">
@@ -21,7 +21,11 @@
                     <div class="panel-heading"><h3 class="panel-title">{{status.name}} <span class="badge">{{(items | filter:status.name).length }}</span></h3></div>
                       <div class="panel-body">
                         <div class="panel panel-default" ng-repeat="item in items | filter:status.name">
-                            <div class="panel-heading"><h3 class="panel-title">{{item.title}}</h3></div>
+                            <div class="panel-heading"><span><h3 class="panel-title">{{item.title}}</h3></span>
+                            <span><button type="button" class="btn btn-danger btn-xs" aria-label="Right Align">
+                              <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="delete(item)"></span>
+                            </button></span>
+                            </div>
                             <div class="panel-body"><p>{{item.description}}</p></div>
                             <div class="panel-footer">
                                 <div class="btn-group" role="group" aria-label="...">
