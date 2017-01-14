@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="todoapp">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    
+    <title>WhatDoToDo</title>
 </head>
 <body>
-<h1>Tah dah!</h1>
+<h1>WhadDoYouToDoToDay</h1>
+    <div class="container" ng-controller="todocontroller as ctr">
+        
+        <div class="row row-content">
+            <div class="col-xs-4" ng-repeat="status in statuses | orderBy:'sequence'" title="{{status.name}}">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3 class="panel-title">{{status.name}} <span class="badge">{{(items | filter:status.name).length }}</span></h3></div>
+                      <div class="panel-body">
+                        <div class="panel panel-default" ng-repeat="item in items | filter:status.name">
+                            <div class="panel-heading"><h3 class="panel-title">{{item.title}}</h3></div>
+                            <div class="panel-body"><p>{{item.description}}</p></div>
+                            <div class="panel-footer">
+                                <div class="btn-group" role="group" aria-label="...">
+                                  <button type="button" ng-class="{'btn btn-success':status.name==item.status, 'btn btn-default':status.name!=item.status}"
+                                        ng-show="status.name!=item.status"  ng-repeat="status in statuses | orderBy:'sequence'"
+                                          data-toggle="tooltip" data-placement="bottom" title="Move to '{{status.name}}'" ng-click="move(item, status)">{{status.name}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+    
+    <script src="scripts/todocontroller.js"></script>
 </html>
