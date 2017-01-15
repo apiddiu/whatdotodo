@@ -95,7 +95,7 @@ angular.module('todoapp', [])
 
                }).then(function successCallback(response) {
                console.info("Received: "+response.data)
-                      $scope.items[findItem(item)].status=response.data;
+                      $scope.items[findItem(item)].status=response.data.name;
                     }, function errorCallback(response) {
                       console.error("Error updating Item status");
                     });
@@ -128,10 +128,6 @@ angular.module('todoapp', [])
            doMove(item, status);
        }
        
-       $scope.delete=function(item){
-           doDelete(item);
-       }
-       
        $scope.prepareAdd=function(status){
            $scope.newItem={
                 title: null,
@@ -155,5 +151,13 @@ angular.module('todoapp', [])
 
        $scope.confirmEdit=function(){
            doEdit($scope.editItem);
+       }
+
+       $scope.prepareDelete=function(item){
+                  $scope.deleteItem=item;
+       }
+
+       $scope.confirmDelete=function(){
+                  doDelete($scope.deleteItem);
        }
 }]);
