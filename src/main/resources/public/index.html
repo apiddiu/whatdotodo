@@ -1,37 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="todoapp">
+
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-    
     <title>WhatDoToDo</title>
 </head>
-<body>
-<h1>WhatDoYouToDoToDay</h1>
-    <div class="container" ng-controller="todocontroller as ctr">
-        
-        <div class="row row-content">
-            <div class="col-xs-4" ng-repeat="status in statuses | orderBy:'sequence'" title="{{status.name}}">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h3 class="panel-title">{{status.name}} <span class="badge">{{(items | filter:status.name).length }}</span></h3></div>
-                      <div class="panel-body">
-                        <div class="panel panel-default" ng-repeat="item in items | filter:status.name">
-                            <div class="panel-heading"><span><h3 class="panel-title">{{item.title}}</h3></span>
-                            <span><button type="button" class="btn btn-danger btn-xs" aria-label="Right Align">
-                              <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="delete(item)"></span>
-                            </button></span>
+
+<body ng-controller="todocontroller as ctr">
+
+    <div class="container">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1>WhatDoYouHaveToDoToDay</h1>
+
+            </div>
+
+            <div class="panel panel-body">
+                <div class="row row-content">
+                    <div class="col-md-4" ng-repeat="status in statuses | orderBy:'sequence'" title="{{status.name}}">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <h3 class="panel-title">{{status.name}} <span class="badge">{{(items | filter:status.name).length }}</span></h3>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-primary btn-xs" aria-label="Right Align">
+                              <span class="glyphicon glyphicon-plus-sign" aria-hidden="true" ng-click="prepareAdd(status)"
+                                    data-toggle="modal" data-target="#addDialog" title="Add"></span>
+                            </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="panel-body"><p>{{item.description}}</p></div>
-                            <div class="panel-footer">
-                                <div class="btn-group" role="group" aria-label="...">
-                                  <button type="button" ng-class="{'btn btn-success':status.name==item.status, 'btn btn-default':status.name!=item.status}"
-                                        ng-show="status.name!=item.status"  ng-repeat="status in statuses | orderBy:'sequence'"
-                                          data-toggle="tooltip" data-placement="bottom" title="Move to '{{status.name}}'" ng-click="move(item, status)">{{status.name}}</button>
+
+                            <div class="panel-body">
+                                <div class="panel panel-warning" ng-repeat="item in items | filter:status.name">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3 class="panel-title">{{item.title}}</h3>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="btn-group" role="group" aria-label="...">
+                                                    <button type="button" class="btn btn-primary btn-xs" aria-label="Right Align">
+                              <span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="prepareEdit(item)"
+                                    data-toggle="modal" data-target="#editDialog" title="Edit"></span>
+                            </button>
+
+                                                    <button type="button" class="btn btn-danger btn-xs" aria-label="Right Align">
+                              <span class="glyphicon glyphicon-remove-sign" aria-hidden="true" ng-click="delete(item)"
+                                     data-toggle="tooltip" data-placement="top" title="Delete"></span>
+                                            </button></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p>{{item.description}}</p>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            <button type="button" ng-class="{'btn btn-success btn-xs':status.name==item.status, 'btn btn-default btn-xs':status.name!=item.status}" ng-show="status.name!=item.status" ng-repeat="status in statuses | orderBy:'sequence'" data-toggle="tooltip" data-placement="bottom"
+                                                title="Move to '{{status.name}}'" ng-click="move(item, status)">{{status.name}}</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -39,8 +71,85 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div id="addDialog" role="dialog" class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #fcf8e3;">
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <h5 class="modal-title">New Item Details</h5>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-4"><label for="txtTitle" title="Title:">Title:</label></div>
+                            <div class="col-sm-8"><input type="text" style="width:100%;" id="txtTitle" ng-model="newItem.title" /></div>
+                        </div>
+                        <div class="row"><span>&nbsp;</span></div>
+                        <div class="row">
+                            <div class="col-sm-4"><label for="txtDescription" title="Description">Description:</label></div>
+                            <div class="col-sm-8"><textarea class="form-control" id="txtDescription" ng-model="newItem.description"></textarea></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary btn-sm" ng-click="confirmAdd()" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="editDialog" role="dialog" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #fcf8e3;">
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <h5 class="modal-title">Edit Item Details</h5>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-4"><label for="txtTitle" title="Title:">Title:</label></div>
+                            <div class="col-sm-8"><input type="text" style="width:100%;" id="txtTitle" ng-model="editItem.title" /></div>
+                        </div>
+                        <div class="row"><span>&nbsp;</span></div>
+                        <div class="row">
+                            <div class="col-sm-4"><label for="txtDescription" title="Description">Description:</label></div>
+                            <div class="col-sm-8"><textarea class="form-control" id="txtDescription" ng-model="editItem.description"></textarea></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary btn-sm" ng-click="confirmEdit()" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </body>
-    
-    <script src="scripts/todocontroller.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<script src="scripts/todocontroller.js"></script>
+
 </html>

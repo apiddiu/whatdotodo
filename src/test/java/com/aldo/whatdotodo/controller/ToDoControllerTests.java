@@ -178,7 +178,7 @@ public class ToDoControllerTests {
             .andReturn();
 
         updateItemStatus(firstItem(getResult).getId())
-            .andExpect(returnedValue(CLOSED.getName()));
+            .andExpect(returnedStatus(CLOSED));
 
         getItems()
             .andExpect(itemsSize(1))
@@ -291,7 +291,7 @@ public class ToDoControllerTests {
             put(composePattern(ITEMS_TEMPLATE, itemId.toString(), STATUS_TEMPLATE))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
-                    gson.toJson("Closed")))
+                    gson.toJson(CLOSED)))
             .andDo(print())
             .andExpect(status().isOk());
     }
@@ -335,7 +335,7 @@ public class ToDoControllerTests {
         return jsonPath("$.status").value(status.getName());
     }
 
-    private ResultMatcher returnedValue(String value) {
+    private ResultMatcher returnedStatus(Status value) {
         return jsonPath("$").value(value);
     }
 

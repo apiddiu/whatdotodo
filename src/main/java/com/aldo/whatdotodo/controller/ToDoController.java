@@ -24,7 +24,7 @@ public class ToDoController {
         return toDoItemRepository.findAll();
     }
 
-    @RequestMapping(value = "{itemId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{itemId}", method = RequestMethod.GET)
     public ToDoItem item(@PathVariable Long itemId) {
         ToDoItem item = toDoItemRepository.findOne(itemId);
 
@@ -48,7 +48,7 @@ public class ToDoController {
         return toDoItemRepository.findAll();
     }
 
-    @RequestMapping(value = "{itemId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{itemId}", method = RequestMethod.DELETE)
     public ToDoItem delete(@PathVariable Long itemId) {
         ToDoItem item = toDoItemRepository.findOne(itemId);
         if (item != null) {
@@ -58,7 +58,7 @@ public class ToDoController {
         throw todoItemNotFound(itemId);
     }
 
-    @RequestMapping(value = "{itemId}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{itemId}", method = RequestMethod.PUT)
     public ToDoItem update(@PathVariable Long itemId, @RequestBody ToDoItem modifiedItem) {
         //TODO Check url itemId and object itemId match
         ToDoItem item = toDoItemRepository.findOne(itemId);
@@ -66,7 +66,7 @@ public class ToDoController {
         if (item != null) {
             item.setTitle(modifiedItem.getTitle());
             item.setDescription(modifiedItem.getDescription());
-            updateStatus(item, modifiedItem.getStatus());
+            item.setStatusObj(item.getStatusObj());
 
             toDoItemRepository.save(item);
             return item;
@@ -74,27 +74,19 @@ public class ToDoController {
         throw todoItemNotFound(itemId);
     }
 
-    @RequestMapping(value = "{itemId}/status", method = RequestMethod.PUT)
-    public String updateStatus(@PathVariable Long itemId, @RequestBody Status status) {
+    @RequestMapping(value = "/{itemId}/status", method = RequestMethod.PUT)
+    public Status updateStatus(@PathVariable Long itemId, @RequestBody Status status) {
         ToDoItem item = toDoItemRepository.findOne(itemId);
         if (item != null) {
-            updateStatus(item, status.getName());
-            toDoItemRepository.save(item);
-            return item.getStatus();
+            Status newStatus = statusRepository.findOne(status.getName());
+            if (newStatus == null) {
+                throw statusNotFound(status.getName());
+            }
+            item.setStatusObj(status);
+
+            return toDoItemRepository.save(item).getStatusObj();
         }
         throw todoItemNotFound(itemId);
-    }
-
-    private void updateStatus(ToDoItem item, String status) {
-        if (status == null) {
-            item.setStatusObj(null);
-        } else {
-            Status newStatus = statusRepository.findOne(status);
-            if (newStatus == null) {
-                throw statusNotFound(status);
-            }
-            item.setStatusObj(newStatus);
-        }
     }
 
     private ResourceNotFoundException todoItemNotFound(Long itemId) {
