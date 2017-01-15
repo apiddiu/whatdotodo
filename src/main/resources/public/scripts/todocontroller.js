@@ -112,7 +112,7 @@ angular.module('todoapp', [])
                            data: item
 
                        }).then(function successCallback(response) {
-                              $scope.items.splice(findItem(response.data));
+                              $scope.items.splice(findItem(response.data),1);
                             }, function errorCallback(response) {
                               console.error("Error deleting Item");
                             });
@@ -142,7 +142,6 @@ angular.module('todoapp', [])
        
        $scope.confirmAdd=function(){
            doAdd($scope.newItem);
-           $scope.newItem=null;
        }
        
        $scope.prepareEdit=function(item){
@@ -150,13 +149,11 @@ angular.module('todoapp', [])
                 id: item.id,
                 title: item.title,
                 description: item.description,
-                status: status.name    
+                status: item.status
            }
        }
-       
+
        $scope.confirmEdit=function(){
            doEdit($scope.editItem);
-           
-           $scope.editItem=null;
        }
 }]);
