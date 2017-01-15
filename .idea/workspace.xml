@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="79eeff8b-3b1c-4662-b192-ed9db4b95600" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/public/whatdotodo.html" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/PrincipalController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/RestSecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/RestSecurityConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/WebSecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/WebSecurityConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/ToDoController.java" afterPath="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/ToDoController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/ToDoItem.java" afterPath="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/ToDoItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/service/ToDoItemRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/service/ToDoItemRepository.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/public/index.html" afterPath="$PROJECT_DIR$/src/main/resources/public/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/public/scripts/todocontroller.js" afterPath="$PROJECT_DIR$/src/main/resources/public/scripts/todocontroller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/aldo/whatdotodo/controller/ToDoControllerTests.java" afterPath="$PROJECT_DIR$/src/test/java/com/aldo/whatdotodo/controller/ToDoControllerTests.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,42 +34,100 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="todocontroller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/todocontroller.js">
+      <file leaf-file-name="Status.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/Status.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+            <state relative-caret-position="180">
+              <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/public/index.html">
+      <file leaf-file-name="StatusDeserializer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/StatusDeserializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/WebSecurityConfig.java">
+      <file leaf-file-name="StatusSerializer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/StatusSerializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+            <state relative-caret-position="165">
+              <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RestSecurityConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/RestSecurityConfig.java">
+      <file leaf-file-name="ToDoItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/ToDoItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+            <state relative-caret-position="255">
+              <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ToDoController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/ToDoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="55" column="49" lean-forward="true" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ToDoControllerTests.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/aldo/whatdotodo/controller/ToDoControllerTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="173">
+              <caret line="314" column="19" lean-forward="false" selection-start-line="314" selection-start-column="19" selection-end-line="314" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResourceNotFoundException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/ResourceNotFoundException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#206#207#0" expanded="true" />
+                <element signature="e#246#247#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,8 +138,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit4 Test Class" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -117,7 +178,6 @@
         <option value="$PROJECT_DIR$/src/test/java/com/aldo/whatdotodo/Application.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/aldo/whatdotodo/ApplicationTest.java" />
         <option value="$PROJECT_DIR$/src/test/resources/application-test.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/service/ToDoItemRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/StatusSerializer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/StatusDeserializer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/ResourceNotFoundException.java" />
@@ -129,21 +189,24 @@
         <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/StatusController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/aldo/whatdotodo/controller/Pippo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/ToDoItem.java" />
         <option value="$PROJECT_DIR$/start.sh" />
         <option value="$PROJECT_DIR$/src/main/resources/data.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/Status.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/schema.sql" />
-        <option value="$PROJECT_DIR$/src/main/resources/public/index.html" />
-        <option value="$PROJECT_DIR$/src/test/java/com/aldo/whatdotodo/controller/ToDoControllerTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/ToDoController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/public/scripts/login.html" />
         <option value="$PROJECT_DIR$/src/main/resources/public/scripts/todoapp.js" />
         <option value="$PROJECT_DIR$/src/main/resources/public/scripts/logincontroller.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/RestSecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/public/scripts/todocontroller.js" />
         <option value="$PROJECT_DIR$/src/main/resources/public/login.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/WebSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/schema.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/ToDoItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/service/ToDoItemRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/PrincipalController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/public/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/public/scripts/todocontroller.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/RestSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/ToDoController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/aldo/whatdotodo/controller/ToDoControllerTests.java" />
       </list>
     </option>
   </component>
@@ -185,6 +248,178 @@
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whatdotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whatdotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.springframework:spring-context:4.3.5.RELEASE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-context-4.3.5.RELEASE.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="springframework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whatdotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.springframework:spring-context:4.3.5.RELEASE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-context-4.3.5.RELEASE.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="springframework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="context" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whatdotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.springframework:spring-context:4.3.5.RELEASE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-context-4.3.5.RELEASE.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="springframework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="context" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="annotation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whatdotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.springframework:spring-context:4.3.5.RELEASE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-context-4.3.5.RELEASE.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whatdotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.springframework.data:spring-data-commons:1.12.6.RELEASE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-data-commons-1.12.6.RELEASE.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whatdotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.springframework.data:spring-data-commons:1.12.6.RELEASE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-data-commons-1.12.6.RELEASE.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whatdotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.springframework.data:spring-data-commons:1.12.6.RELEASE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-data-commons-1.12.6.RELEASE.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="whatdotodo" />
@@ -342,6 +577,40 @@
               <option name="myItemId" value="whatdotodo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whatdotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whatdotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whatdotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -403,20 +672,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="whatdotodo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="whatdotodo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -455,7 +710,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Run">
+  <component name="RunManager" selected="JUnit.ToDoControllerTests">
     <configuration default="false" name="ToDoControllerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -480,32 +735,6 @@
       </option>
       <envs />
       <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ToDoControllerTests.deleteElement" type="mvnRunConfigurationType" factoryName="Mvn" temporary="true" runType="run_test">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="test-compile" />
-                <option value="surefire:test" />
-                <option value="-Dtest=com.aldo.whatdotodo.ToDoControllerTests#deleteElement" />
-              </list>
-            </option>
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
       <method />
     </configuration>
     <configuration default="false" name="ToDoControllerTests.updateElementStatus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -574,6 +803,32 @@
       <option name="MAIN_CLASS_NAME" value="com.aldo.whatdotodo.controller.Pippo" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ToDoControllerTests.setAllItems" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.aldo.whatdotodo.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="whatdotodo" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.aldo.whatdotodo.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.aldo.whatdotodo.controller.ToDoControllerTests" />
+      <option name="METHOD_NAME" value="setAllItems" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -945,18 +1200,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Application.Run" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.ToDoControllerTests" />
-      <item index="2" class="java.lang.String" itemvalue="Mvn.ToDoControllerTests.deleteElement" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ToDoControllerTests.updateElementStatus" />
-      <item index="4" class="java.lang.String" itemvalue="Mvn.ToDoControllerTests.doit" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.Pippo" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ToDoControllerTests.updateElementStatus" />
+      <item index="3" class="java.lang.String" itemvalue="Mvn.ToDoControllerTests.doit" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.Pippo" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.ToDoControllerTests.setAllItems" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.ToDoControllerTests" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ToDoControllerTests.updateElementStatus" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.Pippo" />
-        <item index="3" class="java.lang.String" itemvalue="Mvn.ToDoControllerTests.doit" />
-        <item index="4" class="java.lang.String" itemvalue="Mvn.ToDoControllerTests.deleteElement" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ToDoControllerTests.setAllItems" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ToDoControllerTests.updateElementStatus" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.Pippo" />
+        <item index="4" class="java.lang.String" itemvalue="Mvn.ToDoControllerTests.doit" />
       </list>
     </recent_temporary>
   </component>
@@ -1032,39 +1287,46 @@
       <option name="project" value="LOCAL" />
       <updated>1484400812575</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Front end connected and secured">
+      <created>1484471723074</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1484471723074</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ToDoControllerTests - 2017.01.13 at 14h 12m 49s.xml">
+    <history-entry file="ToDoControllerTests - 2017.01.15 at 10h 07m 52s.xml">
       <configuration name="ToDoControllerTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ToDoControllerTests - 2017.01.13 at 14h 13m 05s.xml">
+    <history-entry file="ToDoControllerTests - 2017.01.15 at 10h 25m 14s.xml">
       <configuration name="ToDoControllerTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ToDoControllerTests - 2017.01.13 at 14h 13m 47s.xml">
+    <history-entry file="ToDoControllerTests - 2017.01.15 at 10h 28m 13s.xml">
       <configuration name="ToDoControllerTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ToDoControllerTests - 2017.01.15 at 07h 58m 11s.xml">
+    <history-entry file="ToDoControllerTests - 2017.01.15 at 10h 28m 39s.xml">
       <configuration name="ToDoControllerTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ToDoControllerTests - 2017.01.15 at 08h 01m 34s.xml">
+    <history-entry file="ToDoControllerTests - 2017.01.15 at 10h 30m 35s.xml">
       <configuration name="ToDoControllerTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ToDoControllerTests_updateElementStatus - 2017.01.15 at 07h 32m 32s.xml">
-      <configuration name="ToDoControllerTests.updateElementStatus" configurationId="JUnit" />
+    <history-entry file="ToDoControllerTests - 2017.01.15 at 10h 31m 19s.xml">
+      <configuration name="ToDoControllerTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ToDoControllerTests_updateElementStatus - 2017.01.15 at 07h 33m 57s.xml">
-      <configuration name="ToDoControllerTests.updateElementStatus" configurationId="JUnit" />
+    <history-entry file="ToDoControllerTests - 2017.01.15 at 10h 33m 46s.xml">
+      <configuration name="ToDoControllerTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ToDoControllerTests_updateElementStatus - 2017.01.15 at 07h 54m 50s.xml">
-      <configuration name="ToDoControllerTests.updateElementStatus" configurationId="JUnit" />
+    <history-entry file="ToDoControllerTests_setAllItems - 2017.01.15 at 10h 11m 49s.xml">
+      <configuration name="ToDoControllerTests.setAllItems" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ToDoControllerTests_updateElementStatus - 2017.01.15 at 07h 55m 36s.xml">
-      <configuration name="ToDoControllerTests.updateElementStatus" configurationId="JUnit" />
+    <history-entry file="ToDoControllerTests_setAllItems - 2017.01.15 at 10h 21m 38s.xml">
+      <configuration name="ToDoControllerTests.setAllItems" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ToDoControllerTests_updateElementStatus - 2017.01.15 at 07h 57m 19s.xml">
-      <configuration name="ToDoControllerTests.updateElementStatus" configurationId="JUnit" />
+    <history-entry file="ToDoControllerTests_setAllItems - 2017.01.15 at 10h 22m 24s.xml">
+      <configuration name="ToDoControllerTests.setAllItems" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -1101,10 +1363,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35339308" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650447" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3828425" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32522407" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25822604" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277849" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Running Info" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Running Result" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1115,7 +1378,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17596567" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -1132,7 +1394,8 @@
     <MESSAGE value="Secured" />
     <MESSAGE value="Front end (disconnected)&#10;  -view items and change status" />
     <MESSAGE value="Front end (disconnected)&#10;  -delete items" />
-    <option name="LAST_COMMIT_MESSAGE" value="Front end (disconnected)&#10;  -delete items" />
+    <MESSAGE value="Front end connected and secured" />
+    <option name="LAST_COMMIT_MESSAGE" value="Front end connected and secured" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1145,42 +1408,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/manifest.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/StatusController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="11" column="3" lean-forward="false" selection-start-line="11" selection-start-column="3" selection-end-line="20" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="20" lean-forward="true" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/application-test.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="22" lean-forward="true" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/ToDoController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1256,31 +1490,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/aldo/whatdotodo/ApplicationTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/service/ToDoItemRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/4.3.5.RELEASE/spring-test-4.3.5.RELEASE.jar!/org/springframework/test/web/servlet/ResultActions.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/StatusSerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/StatusDeserializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1321,17 +1534,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/ResourceNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/service/StatusRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1345,82 +1552,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/aldo/whatdotodo/controller/Pippo.java" />
     <entry file="file://$PROJECT_DIR$/start.sh" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/ToDoItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/data.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="37" lean-forward="false" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/Status.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-          <folding>
-            <element signature="e#426#427#0" expanded="false" />
-            <element signature="e#460#461#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="85" lean-forward="false" selection-start-line="2" selection-start-column="85" selection-end-line="2" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/public/whatdotodo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/StatusController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/aldo/whatdotodo/controller/ToDoControllerTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="335" column="5" lean-forward="true" selection-start-line="335" selection-start-column="5" selection-end-line="335" selection-end-column="5" />
-          <folding>
-            <element signature="e#11833#11834#0" expanded="true" />
-            <element signature="e#11882#11883#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/ToDoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="72" column="9" lean-forward="true" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1441,30 +1576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/todocontroller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/RestSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/WebSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/public/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1473,11 +1584,175 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="37" lean-forward="false" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="57" lean-forward="false" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.12.6.RELEASE/spring-data-commons-1.12.6.RELEASE-sources.jar!/org/springframework/data/repository/CrudRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="53" column="6" lean-forward="false" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/service/ToDoItemRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" column="43" lean-forward="false" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/StatusController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="-1781">
+          <caret line="13" column="56" lean-forward="false" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/todocontroller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/PrincipalController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#530#531#0" expanded="true" />
+            <element signature="e#582#583#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/WebSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/RestSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/Status.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/StatusDeserializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#246#247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/config/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.5.RELEASE/spring-context-4.3.5.RELEASE.jar!/org/springframework/context/annotation/Role.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="5" column="46" lean-forward="true" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/ResourceNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/StatusSerializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/controller/ToDoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="55" column="49" lean-forward="true" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aldo/whatdotodo/model/ToDoItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/aldo/whatdotodo/controller/ToDoControllerTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="314" column="19" lean-forward="false" selection-start-line="314" selection-start-column="19" selection-end-line="314" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

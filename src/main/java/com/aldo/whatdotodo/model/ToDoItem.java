@@ -17,8 +17,12 @@ public class ToDoItem implements Serializable {
 
     @Column
     private String title;
+
     @Column
     private String description;
+
+    @Column(nullable = false)
+    private String username;
 
     @OneToOne
     @JsonIgnore

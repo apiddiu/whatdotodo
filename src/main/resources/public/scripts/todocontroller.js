@@ -1,9 +1,24 @@
 angular.module('todoapp', [])
    .controller('todocontroller', ['$scope', '$filter', '$http',function($scope, $filter, $http) {
 
-    $http.defaults.withCredentials = true;
+    loadPrincipal();
     loadStatuses();
     loadItems();
+
+    function loadPrincipal(){
+            $http({
+                    method: "get",
+                    url: "api/principal",
+                    params: {
+                        action: "get"
+                    }
+                }).then(function successCallback(response) {
+                       $scope.user = response.data;
+                     }, function errorCallback(response) {
+                       console.error("Error loading Principal");
+                     });
+
+               }
 
     function loadStatuses(){
             $http({

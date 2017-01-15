@@ -21,7 +21,6 @@ import com.aldo.whatdotodo.model.ToDoItem;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.apache.commons.lang.StringUtils;
-import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,7 +38,6 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
@@ -74,13 +72,14 @@ public class ToDoControllerTests {
     public final static String TESTER_USER = "test-user";
     public final static String TESTER_PASSWORD = "test-password";
     public final static String TESTER_ROLE = "TESTER";
+    public final static String ADMIN_ROLE = "ADMIN";
     public final static String BASE_API_TEMPLATE = "/api/";
     public static final String ITEMS_TEMPLATE = "items";
     public static final String STATUS_TEMPLATE = "status";
 
     @Before
     public void setup() throws Exception {
-        setItems(Lists.emptyList());
+        clearItems();
     }
 
     @Test
@@ -204,23 +203,18 @@ public class ToDoControllerTests {
         updateItemStatusNotFound(firstItem(getResult).getId());
     }
 
-    @Test
-    public void setAllItems() throws Exception {
-        insertItem();
-
-        setItems(Arrays.asList(
-            new ToDoItem(),
-            new ToDoItem(),
-            new ToDoItem()));
-
-        getItems()
-            .andExpect(itemsSize(3));
-    }
-
     private ResultActions perform(MockHttpServletRequestBuilder request) throws Exception {
         return mvc.perform(
             request
                 .with(user(TESTER_USER).password(TESTER_PASSWORD).roles(TESTER_ROLE))
+                .with(csrf())
+        );
+    }
+
+    private ResultActions performAdmin(MockHttpServletRequestBuilder request) throws Exception {
+        return mvc.perform(
+            request
+                .with(user(TESTER_USER).password(TESTER_PASSWORD).roles(ADMIN_ROLE))
                 .with(csrf())
         );
     }
@@ -308,7 +302,7 @@ public class ToDoControllerTests {
 
     private ResultActions updateItemStatusNotFound(Long itemId) throws Exception {
         return perform(
-            put(composePattern(ITEMS_TEMPLATE , itemId.toString() , STATUS_TEMPLATE))
+            put(composePattern(ITEMS_TEMPLATE, itemId.toString(), STATUS_TEMPLATE))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     gson.toJson(UNKNOWN)))
@@ -316,10 +310,9 @@ public class ToDoControllerTests {
             .andExpect(status().isNotFound());
     }
 
-    private ResultActions setItems(List<ToDoItem> items) throws Exception {
-        return perform(put(composePattern(ITEMS_TEMPLATE))
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(gson.toJson(items)))
+    private ResultActions clearItems() throws Exception {
+        return performAdmin(
+            delete(composePattern(ITEMS_TEMPLATE)))
             .andExpect(status().isOk());
     }
 
@@ -372,26 +365,4 @@ public class ToDoControllerTests {
     private String composePattern(String... patternElements) {
         return BASE_API_TEMPLATE + StringUtils.join(patternElements, "/");
     }
-
-//    @Configuration
-//    @EnableWebSecurity
-//    @Order(99)
-//    static class Config extends WebSecurityConfigurerAdapter {
-//
-//        @Override
-//        protected void configure(HttpSecurity http) throws Exception {
-//            http
-//                .authorizeRequests()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin();
-//        }
-//
-//        @Autowired
-//        public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//            auth
-//                .inMemoryAuthentication()
-//                .withUser(TESTER_USER).password(TESTER_PASSWORD).roles(TESTER_ROLE);
-//        }
-//    }
 }
