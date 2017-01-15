@@ -312,7 +312,7 @@ public class ToDoControllerTests {
 
     private ResultActions clearItems() throws Exception {
         return performAdmin(
-            put(composePattern(ITEMS_TEMPLATE)))
+            delete(composePattern(ITEMS_TEMPLATE)))
             .andExpect(status().isOk());
     }
 
